@@ -1,15 +1,16 @@
 /* The side navigation menu */
 #sideNav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
+  height: 100%;
+  width: 250px;
   position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  z-index: 1; /* Display directly over content on page */
+  top: 0;
   right: 0;
-  background-color: #FFFFFF; /* Black*/
+  background-color: #FFFFFF;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  transition: transform 0.5s;
+  transform: translateX(100%); /* Hide from view by default */
 }
 
 /* The navigation menu links */
@@ -27,14 +28,30 @@
   color: #f1f1f1;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left .5s;
-  padding: 20px;
+/* Move side navigation into view */
+#sideNav.visible {
+  transform: translateX(0);
+}
+
+/* On screens that are less than 700px wide, make the side navigation at the top */
+@media screen and (max-width: 700px) {
+  #sideNav {
+    width: 100%;
+    height: auto;
+    position: fixed;
+
+    /* Translate down instead of across on small screens */
+    transform: translateY(-100%);
+  }
+
+  /* Move side navigation into view */
+  #sideNav.visible {
+    transform: translateY(0%);
+  }
 }
 
 .btnNavBar {
-  z-index: 2;
+  z-index: 2; /* Display over Nav Bar */
   visibility: visible;
   position: fixed;
   display: inline-block;
