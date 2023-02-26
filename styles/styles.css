@@ -1,3 +1,7 @@
+body {
+  background: rgb(11, 5, 111);
+}
+
 /* The side navigation menu */
 #sideNav {
   height: 100%;
@@ -6,7 +10,7 @@
   z-index: 1; /* Display directly over content on page */
   top: 0;
   right: 0;
-  background-color: #FFFFFF;
+  background-color: black;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: transform 0.5s;
@@ -18,14 +22,15 @@
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: white;
   display: block;
   transition: 0.3s;
+  font-family: "Times New Roman", Times, serif;
 }
 
-/* When you mouse over the navigation links, change their color */
+/* Change the navigation menu links' color when hovered over */
 #sideNav a:hover {
-  color: #f1f1f1;
+  color: #888888;
 }
 
 /* Move side navigation into view */
@@ -60,23 +65,67 @@
   padding: 10px;
 }
 
-.bar1, .bar2, .bar3 {
+/* Change the hamburger bars' color when hovered*/
+.btnNavBar:hover .bars {
+  background-color: #888888;
+}
+
+.bars {
   width: 35px;
   height: 5px;
-  background-color: black;
+  background-color: white;
   margin: 6px 0;
   transition: 0.4s;
 }
 
-.open .bar1 {
+.open #bar1 {
   transform: translate(0, 11px) rotate(45deg);
 }
 
-.open .bar2 {
+.open #bar2 {
   transform: scaleX(0);
   opacity: 0;
 }
 
-.open .bar3 {
+.open #bar3 {
   transform: translate(0, -11px) rotate(-45deg);
+}
+
+.homePage {
+  text-align: center;
+  transform: translateY(100%);
+  font-size: 0px; /* Don't have spaces between spans */
+}
+
+.homePage span {
+  color: white;
+  line-height: 65px;
+  font-family: "Ultra", serif; /* Custom font from google fonts */
+  font-size: 60px;
+  opacity: 0;
+  filter: blur(4px);
+  animation: fade-in 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+.homePage span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.homePage span:nth-child(3) {
+  animation-delay: 0.7s;
+}
+
+.homePage span:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.homePage span:nth-child(5) {
+  animation-delay: 1.05s;
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
 }
