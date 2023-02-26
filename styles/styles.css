@@ -1,5 +1,5 @@
 body {
-  background: rgb(11, 5, 111);
+  background: #0B056F;
 }
 
 /* The side navigation menu */
@@ -93,18 +93,21 @@ body {
 
 .homePage {
   text-align: center;
-  transform: translateY(100%);
   font-size: 0px; /* Don't have spaces between spans */
+  transform: translateY(65%);
+  user-select: none;
 }
 
 .homePage span {
   color: white;
-  line-height: 65px;
+  line-height: 75px;
   font-family: "Ultra", serif; /* Custom font from google fonts */
   font-size: 60px;
   opacity: 0;
   filter: blur(4px);
-  animation: fade-in 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+
+  /* Animation is from here: https://codepen.io/alvarotrigo/pen/ExvqdNa */
+  animation: fadeIn 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 .homePage span:nth-child(2) {
@@ -119,13 +122,52 @@ body {
   animation-delay: 0.9s;
 }
 
-.homePage span:nth-child(5) {
-  animation-delay: 1.05s;
-}
-
-@keyframes fade-in {
+@keyframes fadeIn {
   100% {
     opacity: 1;
     filter: blur(0px);
   }
+}
+
+.homePage .button {
+  position: absolute;
+  top: 115%;
+  width: 16%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: transparent;
+  color: #FF00AA;
+  border: 2px solid #FF00AA;
+  font-size: 18px;
+  font-family: system-ui; /* Default button font */
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.4s linear;
+  animation: fadeIn 2s forwards 1;
+}
+
+.homePage .button:hover {
+  background: #FF00AA;
+  color: #0B056F;
+  transition: all 0.4s linear;
+}
+
+.homePage .button i {
+  margin-left: 10px;
+  transition: transform ease 0.5s;
+}
+
+.homePage .button:hover i {
+  transform: rotate(90deg);
+  transition: transform ease 0.4s;
+}
+
+.homePage #viewWork {
+  left: 31%;
+  animation-delay: 1.4s;
+}
+
+.homePage #contact {
+  left: 51%;
+  animation-delay: 1.8s;
 }
