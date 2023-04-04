@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
   <title>Joey Holtzman</title>
   <link href="styles/styles.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Tilt+Warp&family=Ultra&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="app.js"></script>
 </head>
 <body>
   <div id="sideNav">
-    <a href="">Home</a>
+    <a href="#homePage">Home</a>
     <a href="#">About</a>
+    <a href="#projects">Projects</a>
     <a href="#">Contact</a>
   </div>
 
@@ -23,20 +24,54 @@
     <div class="bars" id="bar3"></div>
   </div>
 
-  <div class="homePage">
-    <span>Hi, </span>
-    <span>I'm<br></span>
-    <span>Joey </span>
-    <span>Holtzman</span>
+  <div class="sections">
+    <section id="homePage">
+      <div class="home">
+        <span style="animation-delay: 0.3s;">Hi, </span>
+        <span style="animation-delay: 0.5s;">I'm<br></span>
+        <span style="animation-delay: 0.7s;">Joey </span>
+        <span style="animation-delay: 0.9s;">Holtzman</span>
 
-    <div class="button" id="viewWork">
-      View my work
-      <i class="fa-solid fa-arrow-right"></i>
-    </div>
-    <div class="button" id="contact">
-      Contact Me
-      <i class="fa-solid fa-arrow-right"></i>
-    </div>
+        <a href="#projects">
+          <div class="button" id="viewWork">
+            View My Work
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+        <a href="#">
+          <div class="button" id="contact">
+            Contact Me
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </a>
+      </div>
+
+    </section>
+    <section id="projects">
+      <h1>PROJECTS</h1>
+      <ul id="project-icons">
+        <li class="project" id="southwest">
+          <img src="images/Southwest.jpg" alt="Auto-Southwest Check-In">
+          <p class="project-description">Auto-Southwest<br>Check-In</p>
+          <a class="project-description button"
+             href="https://github.com/jdholtz/auto-southwest-check-in"
+             rel="noreferrer noopener"
+             target="_blank">
+            View Project
+          </a>
+        </li>
+        <li class="project" id="snakeAI" style="transition-delay: 0.1s;">
+          <img src="images/SnakeAI.png" alt="SnakeAI">
+          <p class="project-description">SnakeAI</p>
+          <a class="project-description button"
+             href="https://github.com/jdholtz/SnakeAI"
+             rel="noreferrer noopener"
+             target="_blank">
+            View Project
+          </a>
+        </li>
+      </ul>
+    </section>
   </div>
 </body>
 </html>

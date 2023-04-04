@@ -1,16 +1,40 @@
-body {
-  background: #0B056F;
+html, body {
+  background-color: white;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+* {
+  /* Just for development */
+  /* outline: 1px solid red !important; */
+}
+
+.button {
+  position: absolute;
+  color: #FF00AA;
+  border: 2px solid #FF00AA;
+  font-family: Cantarell, FreeSans, serif;
+  cursor: pointer;
+  text-decoration: none; /* Don't underline text in the links */
+}
+
+.button:hover {
+  background-color: #FF00AA;
+  color: #0B056F;
+  transition: all 0.4s linear;
 }
 
 /* The side navigation menu */
 #sideNav {
   height: 100%;
-  width: 250px;
+  width: 15%;
   position: fixed; /* Stay in place */
   z-index: 1; /* Display directly over content on page */
   top: 0;
   right: 0;
-  background-color: black;
+  background-color: #4A4C4F;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: transform 0.5s;
@@ -19,11 +43,11 @@ body {
 
 /* The navigation menu links */
 #sideNav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: white;
   display: block;
+  padding: 2% 8% 10%; /* top, right and left, bottom */
+  text-decoration: none;
+  font-size: clamp(16px, 6vw, 32px);
+  color: white;
   transition: 0.3s;
   font-family: "Times New Roman", Times, serif;
 }
@@ -38,8 +62,10 @@ body {
   transform: translateX(0);
 }
 
-/* On screens that are less than 700px wide, make the side navigation at the top */
-@media screen and (max-width: 700px) {
+/* On screens that are less than 700px wide and in portrait mode, make the side navigation at the top */
+@media only screen
+  and (max-device-width: 700px)
+  and (orientation: portrait) {
   #sideNav {
     width: 100%;
     height: auto;
@@ -65,9 +91,8 @@ body {
   padding: 10px;
 }
 
-/* Change the hamburger bars' color when hovered*/
-.btnNavBar:hover .bars {
-  background-color: #888888;
+.btnNavBar.dark .bars {
+  background-color: black;
 }
 
 .bars {
@@ -76,6 +101,15 @@ body {
   background-color: white;
   margin: 6px 0;
   transition: 0.4s;
+}
+
+.btnNavBar.open .bars {
+  background-color: white;
+}
+
+/* Change the hamburger bars' color when hovered */
+.btnNavBar:hover .bars {
+  background-color: #888888;
 }
 
 .open #bar1 {
@@ -91,35 +125,43 @@ body {
   transform: translate(0, -11px) rotate(-45deg);
 }
 
-.homePage {
+.sections {
+  height: 100%;
   text-align: center;
-  font-size: 0px; /* Don't have spaces between spans */
-  transform: translateY(65%);
   user-select: none;
 }
 
-.homePage span {
+.sections h1 {
+  padding-top: 20px;
+  color: #43464b;
+  font-size: 4em;
+  font-family: "Tilt Warp", serif;
+}
+
+.home {
+  padding-bottom: 10%;
+}
+
+#homePage {
+  background-color: #0B056F;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;/*align child vertical*/
+}
+
+#projects {
+  background-color: white;  /* Set in html and body, but here for clarity */
+}
+
+#homePage span {
   color: white;
-  line-height: 75px;
   font-family: "Ultra", serif; /* Custom font from google fonts */
   font-size: 60px;
   opacity: 0;
   filter: blur(4px);
-
   /* Animation is from here: https://codepen.io/alvarotrigo/pen/ExvqdNa */
-  animation: fadeIn 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-.homePage span:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.homePage span:nth-child(3) {
-  animation-delay: 0.7s;
-}
-
-.homePage span:nth-child(4) {
-  animation-delay: 0.9s;
+  animation: fadeIn 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 @keyframes fadeIn {
@@ -129,45 +171,100 @@ body {
   }
 }
 
-.homePage .button {
-  position: absolute;
-  top: 115%;
+#homePage .button {
   width: 16%;
+  margin-top: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: transparent;
-  color: #FF00AA;
-  border: 2px solid #FF00AA;
-  font-size: 18px;
-  font-family: system-ui; /* Default button font */
   opacity: 0;
-  cursor: pointer;
-  transition: all 0.4s linear;
-  animation: fadeIn 2s forwards 1;
+  font-size: 1.3em;
+  transition: 0.4s linear;
+  animation: fadeIn 2s forwards;
 }
 
-.homePage .button:hover {
-  background: #FF00AA;
-  color: #0B056F;
-  transition: all 0.4s linear;
-}
-
-.homePage .button i {
+#homePage .button i {
   margin-left: 10px;
   transition: transform ease 0.5s;
 }
 
-.homePage .button:hover i {
+#homePage .button:hover i {
   transform: rotate(90deg);
   transition: transform ease 0.4s;
 }
 
-.homePage #viewWork {
+#homePage #viewWork {
   left: 31%;
   animation-delay: 1.4s;
 }
 
-.homePage #contact {
+#homePage #contact {
   left: 51%;
   animation-delay: 1.8s;
 }
+
+#project-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  flex-wrap: wrap;
+  /* Don't extend the scrollbar to the elements' positions before they are transitioned up */
+  overflow-y: hidden;
+  list-style-type: none;
+}
+
+#project-icons.slide-in .project {
+  transform: translateY(0%);
+  transition: transform 1s ease-out;
+}
+
+.project {
+  padding: 1.3%;
+  position: relative;
+  width: 38%;
+  height: 46%;
+  transform: translateY(150%);
+}
+
+#project-icons .project img {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+}
+
+.project .button {
+  top: 67%;
+  bottom: 17%;
+  width: 45%;
+  margin: auto;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-size: 1.2rem;
+}
+
+.project-description {
+  position: absolute;
+  inset: 20% 0 0 0;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.project p {
+  font-family: 'Playfair Display', Ultra, serif;
+  font-size: 1.5rem;
+}
+
+.project:hover img {
+  transform: scale(1.05);
+  opacity: 0.3;
+}
+
+.project:hover .project-description {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.project .button:hover {
+   transition-duration: 0.2s;
+ }
