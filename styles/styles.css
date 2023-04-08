@@ -1,3 +1,10 @@
+/* | Global Styles | */
+
+/* Just for development */
+* {
+  /* outline: 1px solid red !important; */
+}
+
 html, body {
   background-color: white;
   height: 100%;
@@ -6,10 +13,8 @@ html, body {
   scroll-behavior: smooth;
 }
 
-* {
-  /* Just for development */
-  /* outline: 1px solid red !important; */
-}
+
+/* | Common Styles | */
 
 .button {
   position: absolute;
@@ -26,7 +31,22 @@ html, body {
   transition: all 0.4s linear;
 }
 
-/* The side navigation menu */
+.sections {
+  height: 100%;
+  text-align: center;
+  user-select: none;
+}
+
+.sections h1 {
+  padding-top: 20px;
+  color: #43464b;
+  font-size: 4em;
+  font-family: "Tilt Warp", serif;
+}
+
+
+/* | Side Navigation Menu | */
+
 #sideNav {
   height: 100%;
   width: 15%;
@@ -41,10 +61,14 @@ html, body {
   transform: translateX(100%); /* Hide from view by default */
 }
 
-/* The navigation menu links */
+/* Move side navigation into view */
+#sideNav.visible {
+  transform: translateX(0);
+}
+
 #sideNav a {
   display: block;
-  padding: 2% 8% 10%; /* top, right and left, bottom */
+  padding: 2% 8% 10%; /* Top, right and left, bottom */
   text-decoration: none;
   font-size: clamp(16px, 6vw, 32px);
   color: white;
@@ -52,34 +76,12 @@ html, body {
   font-family: "Times New Roman", Times, serif;
 }
 
-/* Change the navigation menu links' color when hovered over */
 #sideNav a:hover {
   color: #888888;
 }
 
-/* Move side navigation into view */
-#sideNav.visible {
-  transform: translateX(0);
-}
 
-/* On screens that are less than 700px wide and in portrait mode, make the side navigation at the top */
-@media only screen
-  and (max-device-width: 700px)
-  and (orientation: portrait) {
-  #sideNav {
-    width: 100%;
-    height: auto;
-    position: fixed;
-
-    /* Translate down instead of across on small screens */
-    transform: translateY(-100%);
-  }
-
-  /* Move side navigation into view */
-  #sideNav.visible {
-    transform: translateY(0%);
-  }
-}
+/* | Navigation Bar Button | */
 
 .btnNavBar {
   z-index: 2; /* Display over Nav Bar */
@@ -88,11 +90,7 @@ html, body {
   display: inline-block;
   cursor: pointer;
   right: 20px;
-  padding: 10px;
-}
-
-.btnNavBar.dark .bars {
-  background-color: black;
+  padding: 10px 10px 0; /* Top, right and left, bottom */
 }
 
 .bars {
@@ -103,11 +101,14 @@ html, body {
   transition: 0.4s;
 }
 
+.btnNavBar.dark .bars {
+  background-color: black;
+}
+
 .btnNavBar.open .bars {
   background-color: white;
 }
 
-/* Change the hamburger bars' color when hovered */
 .btnNavBar:hover .bars {
   background-color: #888888;
 }
@@ -125,18 +126,8 @@ html, body {
   transform: translate(0, -11px) rotate(-45deg);
 }
 
-.sections {
-  height: 100%;
-  text-align: center;
-  user-select: none;
-}
 
-.sections h1 {
-  padding-top: 20px;
-  color: #43464b;
-  font-size: 4em;
-  font-family: "Tilt Warp", serif;
-}
+/* | Homepage | */
 
 .home {
   padding-bottom: 10%;
@@ -147,11 +138,7 @@ html, body {
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;/*align child vertical*/
-}
-
-#projects {
-  background-color: white;  /* Set in html and body, but here for clarity */
+  align-items: center; /* Align child vertical */
 }
 
 #homePage span {
@@ -162,13 +149,6 @@ html, body {
   filter: blur(4px);
   /* Animation is from here: https://codepen.io/alvarotrigo/pen/ExvqdNa */
   animation: fadeIn 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-@keyframes fadeIn {
-  100% {
-    opacity: 1;
-    filter: blur(0px);
-  }
 }
 
 #homePage .button {
@@ -183,7 +163,7 @@ html, body {
 }
 
 #homePage .button i {
-  margin-left: 10px;
+  margin-left: 5px;
   transition: transform ease 0.5s;
 }
 
@@ -192,6 +172,7 @@ html, body {
   transition: transform ease 0.4s;
 }
 
+/* Homepage buttons */
 #homePage #viewWork {
   left: 31%;
   animation-delay: 1.4s;
@@ -202,6 +183,13 @@ html, body {
   animation-delay: 1.8s;
 }
 
+
+/* | Projects page | */
+
+#projects {
+  background-color: white;  /* Set in html and body, but here for clarity */
+}
+
 #project-icons {
   display: flex;
   align-items: center;
@@ -209,8 +197,8 @@ html, body {
   width: 80%;
   margin: auto;
   flex-wrap: wrap;
-  /* Don't extend the scrollbar to the elements' positions before they are transitioned up */
   overflow-y: hidden;
+  /* Don't extend the scrollbar to the elements' positions before they are transitioned up */
   list-style-type: none;
 }
 
@@ -219,18 +207,18 @@ html, body {
   transition: transform 1s ease-out;
 }
 
+#project-icons .project img {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s;
+}
+
 .project {
   padding: 1.3%;
   position: relative;
   width: 38%;
   height: 46%;
   transform: translateY(150%);
-}
-
-#project-icons .project img {
-  width: 100%;
-  height: 100%;
-  transition: 0.3s;
 }
 
 .project .button {
@@ -243,12 +231,9 @@ html, body {
   font-size: 1.2rem;
 }
 
-.project-description {
-  position: absolute;
-  inset: 20% 0 0 0;
-  opacity: 0;
-  transition: 0.3s;
-}
+.project .button:hover {
+   transition-duration: 0.2s;
+ }
 
 .project p {
   font-family: 'Playfair Display', Ultra, serif;
@@ -260,11 +245,45 @@ html, body {
   opacity: 0.3;
 }
 
+.project-description {
+  position: absolute;
+  inset: 20% 0 0 0;
+  opacity: 0;
+  transition: 0.3s;
+}
+
 .project:hover .project-description {
   opacity: 1;
   transform: scale(1.03);
 }
 
-.project .button:hover {
-   transition-duration: 0.2s;
- }
+
+ /* | Animations | */
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+
+ /* | Media queries | */
+@media only screen
+  and (max-device-width: 700px)
+  and (orientation: portrait) {
+
+  /* Move the navigation bar to the top */
+  #sideNav {
+    width: 100%;
+    height: auto;
+    position: fixed;
+
+    /* Open downwards instead of sideways */
+    transform: translateY(-100%);
+  }
+
+  /* Move side navigation into view */
+  #sideNav.visible {
+    transform: translateY(0%);
+  }
+}
