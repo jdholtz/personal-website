@@ -1,3 +1,5 @@
+const FORMSPREE_URL = "https://formspree.io/f/xvonvzjn";
+
 let sideNav;
 let btnNavBar;
 
@@ -25,15 +27,55 @@ function slideIn() {
 // Change the navigation bar button color based on what section it is in
 function changeNavBarBtnColor() {
     const btnNavBar = document.querySelector(".btnNavBar");
-    const homeSection = document.querySelector("#homePage");
+    const projectSection = document.querySelector("#projects");
     const btnNavBarBox = btnNavBar.getBoundingClientRect();
-    const homeSectionBox = homeSection.getBoundingClientRect();
+    const projectSectionBox = projectSection.getBoundingClientRect();
 
-    if (btnNavBarBox.bottom < homeSectionBox.bottom) {
-        btnNavBar.classList.remove("dark");
-    } else {
+    if (btnNavBarBox.bottom > projectSectionBox.top) {
         btnNavBar.classList.add("dark");
+    } else {
+        btnNavBar.classList.remove("dark");
     }
+}
+
+function showFormMessage(message) {
+    const displayMessage = document.querySelector(message);
+    displayMessage.classList.add("visible");
+}
+
+function sendEmail() {
+    const form = document.querySelector(".contactForm");
+
+    // Only submit the form once
+    if (form.classList.contains("submitted")) return;
+
+    // Create a JSON object from the form data
+    const data = new FormData(form);
+    formData = JSON.stringify(Object.fromEntries(data));
+
+    const options = {method: "POST", body: formData, headers: {'Content-Type': 'application/json'}};
+
+    fetch(FORMSPREE_URL, options)
+    .catch(e => {
+        console.log("Error submitting form");
+        console.log(e);
+        showFormMessage(".failMessage");
+    })
+    .then(r => r.json())
+    .then(response => {
+        console.log(response);
+
+        if (response.ok) {
+            console.log("Successfully sent the form");
+            showFormMessage(".successMessage");
+        }
+        else {
+            console.log("Response was not successful");
+            showFormMessage(".failMessage");
+        }
+    });
+
+    form.classList.add("submitted");
 }
 
 // TODO: Add debounce function
@@ -63,4 +105,12 @@ document.addEventListener("DOMContentLoaded", function() {
             closeNavBar();
         }
     });
+
+    document.querySelector(".contactForm").addEventListener("submit", e => {
+        // Prevent a redirect
+        e.preventDefault();
+
+        sendEmail();
+    });
+
 });

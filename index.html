@@ -15,7 +15,7 @@
     <a href="#homePage">Home</a>
     <a href="#">About</a>
     <a href="#projects">Projects</a>
-    <a href="#">Contact</a>
+    <a href="#contact">Contact</a>
   </div>
 
   <div class="btnNavBar">
@@ -33,20 +33,22 @@
         <span style="animation-delay: 0.9s;">Holtzman</span>
 
         <a href="#projects">
-          <div class="button" id="viewWork">
+          <div class="button" id="viewWork-button">
             View My Work
             <i class="fa-solid fa-arrow-right"></i>
           </div>
         </a>
-        <a href="#">
-          <div class="button" id="contact">
+
+        <a href="#contact">
+          <div class="button" id="contact-button">
             Contact Me
             <i class="fa-solid fa-arrow-right"></i>
           </div>
         </a>
-      </div>
 
+      </div>
     </section>
+
     <section id="projects">
       <h1>PROJECTS</h1>
       <ul id="project-icons">
@@ -60,6 +62,7 @@
             View Project
           </a>
         </li>
+
         <li class="project" id="snakeAI" style="transition-delay: 0.1s;">
           <img src="images/SnakeAI.png" alt="SnakeAI">
           <p class="project-description">SnakeAI</p>
@@ -70,8 +73,31 @@
             View Project
           </a>
         </li>
+
       </ul>
     </section>
+
+    <section id="contact">
+      <h1>CONTACT</h1>
+      <form class="contactForm">
+        <input type="text" id="name" name="name" placeholder="Name" />
+        <input type="email" id="email" name="email" placeholder="Email" />
+        <textarea id="message" name="message" placeholder="Message"></textarea>
+        <input id="contactSubmitBtn" class="button" type="submit" value="SUMBIT" />
+
+        <div class="formMessage">
+          <div class="successMessage">
+            Form successfully submitted! I will be in touch with you shortly.
+          </div>
+          <div class="failMessage">
+            Form submission failed. Please send the message to
+            <a href="mailto:joeyholtzman0507@gmail.com">joeyholtzman0507@gmail.com</a>
+          </div>
+        </div>
+
+      </form>
+    </section>
+
   </div>
 </body>
 </html>

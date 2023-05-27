@@ -17,18 +17,20 @@ html, body {
 /* | Common Styles | */
 
 .button {
+  background-color: transparent;
   position: absolute;
   color: #FF00AA;
   border: 2px solid #FF00AA;
   font-family: Cantarell, FreeSans, serif;
   cursor: pointer;
   text-decoration: none; /* Don't underline text in the links */
+  transition: 0.4s linear;
 }
 
 .button:hover {
   background-color: #FF00AA;
   color: #0B056F;
-  transition: all 0.4s linear;
+  transition: 0.4s linear;
 }
 
 .sections {
@@ -42,6 +44,10 @@ html, body {
   color: #43464b;
   font-size: 4em;
   font-family: "Tilt Warp", serif;
+}
+
+.sections section {
+  height: 100%;
 }
 
 
@@ -135,10 +141,9 @@ html, body {
 
 #homePage {
   background-color: #0B056F;
-  height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center; /* Align child vertical */
+  align-items: center;
 }
 
 #homePage span {
@@ -158,7 +163,6 @@ html, body {
   padding-bottom: 15px;
   opacity: 0;
   font-size: 1.3em;
-  transition: 0.4s linear;
   animation: fadeIn 2s forwards;
 }
 
@@ -173,12 +177,12 @@ html, body {
 }
 
 /* Homepage buttons */
-#homePage #viewWork {
+#homePage #viewWork-button {
   left: 31%;
   animation-delay: 1.4s;
 }
 
-#homePage #contact {
+#homePage #contact-button {
   left: 51%;
   animation-delay: 1.8s;
 }
@@ -197,8 +201,8 @@ html, body {
   width: 80%;
   margin: auto;
   flex-wrap: wrap;
-  overflow-y: hidden;
   /* Don't extend the scrollbar to the elements' positions before they are transitioned up */
+  overflow-y: hidden;
   list-style-type: none;
 }
 
@@ -258,7 +262,100 @@ html, body {
 }
 
 
+/* | Contact page | */
+
+#contact {
+  background-color: #BEBEBE;
+}
+
+#contact h1 {
+  color: black;
+  margin-bottom: 30px;
+}
+
+#contact .contactForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 0.1fr 0.6fr 0.15fr 0.2fr;
+  grid-row-gap: 5px;
+  grid-column-gap: 5px;
+  width: 50%;
+  height: 75%;
+  margin: auto;
+}
+
+#contact .button,
+#contact .formMessage,
+#contact #message {
+  /* Span these elements across both columns */
+  grid-column: span 2;
+}
+
+#contact .button {
+  position: relative;
+  width: 25%;
+  place-self: center; /* Center in the grid */
+  transition-duration: 0.2s;
+}
+
+#contact input,
+#contact textarea {
+  resize: none;
+  padding: 8px 6px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+#contact #email:focus,
+#contact #name:focus,
+#contact textarea:focus {
+  outline: none;
+  border-color: #555555;
+  border-radius: 4px;
+}
+
+#contact textarea:focus::selection,
+#contact input:focus::selection {
+  /* Highlight color for selected text */
+  background-color: #888888;
+}
+
+#contact .formMessage {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#contact .contactForm.submitted .formMessage {
+  /* Pop the message out when the form is submitted */
+  animation: 1.2s popOut ease;
+}
+
+#contact .formMessage div {
+  /* Hide the form message until the form is submitted */
+  display: none;
+}
+
+#contact .formMessage div.visible {
+  /* Reset the display to its inherited value */
+  display: unset;
+}
+
+#contact .formMessage .failMessage {
+  color: #FF0000;
+}
+
+#contact .formMessage .successMessage {
+  color: #00FF00;
+}
+
+#contact .failMessage a {
+  text-decoration: none; /* Don't underline text in the links */
+}
+
+
  /* | Animations | */
+
 @keyframes fadeIn {
   100% {
     opacity: 1;
@@ -266,8 +363,19 @@ html, body {
   }
 }
 
+@keyframes popOut {
+  50% {
+    transform: scale(1.05);
+  }
 
- /* | Media queries | */
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* | Media queries | */
+
 @media only screen
   and (max-device-width: 700px)
   and (orientation: portrait) {
