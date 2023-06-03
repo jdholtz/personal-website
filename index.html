@@ -13,7 +13,7 @@
 <body>
   <div id="sideNav">
     <a href="#homePage">Home</a>
-    <a href="#">About</a>
+    <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
@@ -32,7 +32,7 @@
         <span style="animation-delay: 0.7s;">Joey </span>
         <span style="animation-delay: 0.9s;">Holtzman</span>
 
-        <a href="#projects">
+        <a href="#about">
           <div class="button" id="viewWork-button">
             View My Work
             <i class="fa-solid fa-arrow-right"></i>
@@ -47,6 +47,10 @@
         </a>
 
       </div>
+    </section>
+
+    <section id="about">
+      <h1>ABOUT</h1>
     </section>
 
     <section id="projects">
@@ -80,9 +84,9 @@
     <section id="contact">
       <h1>CONTACT</h1>
       <form class="contactForm">
-        <input type="text" id="name" name="name" placeholder="Name" />
-        <input type="email" id="email" name="email" placeholder="Email" />
-        <textarea id="message" name="message" placeholder="Message"></textarea>
+        <input class="formInput" type="text" id="name" name="name" placeholder="Name" />
+        <input class="formInput"type="email" id="email" name="email" placeholder="Email" />
+        <textarea class="formInput"id="message" name="message" placeholder="Message"></textarea>
         <input id="contactSubmitBtn" class="button" type="submit" value="SUMBIT" />
 
         <div class="formMessage">
@@ -91,7 +95,7 @@
           </div>
           <div class="failMessage">
             Form submission failed. Please send the message to
-            <a href="mailto:joeyholtzman0507@gmail.com">joeyholtzman0507@gmail.com</a>
+            <a href="mailto:joeyholtzman0507@gmail.com" target="_blank">joeyholtzman0507@gmail.com</a>
           </div>
         </div>
 

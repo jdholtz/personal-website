@@ -27,11 +27,16 @@ function slideIn() {
 // Change the navigation bar button color based on what section it is in
 function changeNavBarBtnColor() {
     const btnNavBar = document.querySelector(".btnNavBar");
-    const projectSection = document.querySelector("#projects");
+    const aboutSection = document.querySelector("#about");
     const btnNavBarBox = btnNavBar.getBoundingClientRect();
-    const projectSectionBox = projectSection.getBoundingClientRect();
+    const aboutSectionBox = aboutSection.getBoundingClientRect();
 
-    if (btnNavBarBox.bottom > projectSectionBox.top) {
+    const contactSection = document.querySelector("#contact");
+    const contactSectionBox = contactSection.getBoundingClientRect();
+
+    // Dark if it is in the about or project section
+    if (btnNavBarBox.bottom > aboutSectionBox.top &&
+        btnNavBarBox.bottom < contactSectionBox.top) {
         btnNavBar.classList.add("dark");
     } else {
         btnNavBar.classList.remove("dark");
