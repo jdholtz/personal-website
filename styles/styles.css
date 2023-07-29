@@ -138,7 +138,7 @@ html, body {
 .bottomBar {
   overflow: hidden;
   position: fixed;
-  width: 100%;
+  width: 97%;
   bottom: 0;
   right: 1.5%;
   z-index: 1;
@@ -152,6 +152,16 @@ html, body {
   font-size: 2.5rem;
   float: right;
   text-decoration: none;
+}
+
+.bottomBar a.left {
+  float: left;
+  margin-left: 0;
+}
+
+.bottomBar img {
+  width: 3.5%;
+  border-radius: 10px;
 }
 
 .bottomBar i {
