@@ -43,7 +43,7 @@ html, body {
   padding-top: 20px;
   color: #43464b;
   font-size: 4em;
-  font-family: "Tilt Warp", serif;
+  font-family: Cantarell, serif;
   margin: 0;
 }
 
@@ -61,7 +61,7 @@ html, body {
   z-index: 1; /* Display directly over content on page */
   top: 0;
   right: 0;
-  background-color: #4A4C4F;
+  background-color: #404040;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: transform 0.5s;
@@ -149,7 +149,7 @@ html, body {
 
 #homePage span {
   color: white;
-  font-family: "Ultra", serif; /* Custom font from google fonts */
+  font-family: Inter, serif;
   font-size: 60px;
   opacity: 0;
   filter: blur(4px);
@@ -233,7 +233,7 @@ html, body {
 
 #about .about-description {
   font-size: 1.7rem;
-  font-family: "Arvo", serif;
+  font-family: Arvo, serif;
   color: #424242;
   margin: 0 5%;
 }
@@ -288,7 +288,7 @@ html, body {
   height: 38%;
   border: 3px solid #0B056F;
   border-radius: 15px;
-  font-family: "Arvo", serif;
+  font-family: Arvo, serif;
   transform: translateX(100%);
   transition-duration: 2s;
 }
@@ -384,7 +384,7 @@ html, body {
 /* | Projects page | */
 
 #projects {
-  background-color: white;  /* Set in html and body, but here for clarity */
+  background-color: white; /* Set in html and body, but here for clarity */
 }
 
 #project-icons {
@@ -433,7 +433,7 @@ html, body {
  }
 
 .project p {
-  font-family: 'Playfair Display', Ultra, serif;
+  font-family: "Playfair Display", Ultra, serif;
   font-size: 1.5rem;
 }
 
@@ -464,7 +464,7 @@ html, body {
 
 #contact h1 {
   color: white;
-  margin-bottom: 30px;
+  margin-bottom: 3%;
 }
 
 #contact .contactForm {
@@ -507,7 +507,7 @@ html, body {
 
 #contact .formInput {
   border-radius: 4px;
-  border: 1.5px solid #555555;
+  border: 1.5px solid;
 }
 
 #contact .formInput:focus {
