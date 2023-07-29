@@ -57,15 +57,15 @@ html, body {
 #sideNav {
   height: 100%;
   width: 15%;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Display directly over content on page */
+  position: fixed;
+  z-index: 1;
   top: 0;
   right: 0;
   background-color: #404040;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
+  padding-top: 60px;
   transition: transform 0.5s;
-  transform: translateX(100%); /* Hide from view by default */
+  transform: translateX(100%);
 }
 
 /* Move side navigation into view */
@@ -96,7 +96,7 @@ html, body {
   position: fixed;
   display: inline-block;
   cursor: pointer;
-  right: 20px;
+  right: 1.5%;
   padding: 10px 10px 0; /* Top, right and left, bottom */
 }
 
@@ -131,6 +131,40 @@ html, body {
 
 .open #bar3 {
   transform: translate(0, -11px) rotate(-45deg);
+}
+
+
+/* | Bottom bar | */
+.bottomBar {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  right: 1.5%;
+  z-index: 1;
+}
+
+.bottomBar a {
+  display: block;
+  color: #f2f2f2;
+  margin-left: 2%;
+  padding: 1% 0;
+  font-size: 2.5rem;
+  float: right;
+  text-decoration: none;
+}
+
+.bottomBar i {
+  color: white;
+  transition: 0.3s;
+}
+
+.bottomBar.dark i {
+  color: black;
+}
+
+.bottomBar i:hover {
+  color: #888888;
 }
 
 
@@ -169,6 +203,7 @@ html, body {
 
 #homePage .button i {
   margin-left: 5px;
+  padding-left: 1px;
   transition: transform ease 0.5s;
 }
 

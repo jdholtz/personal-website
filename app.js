@@ -45,23 +45,34 @@ function slideIn() {
     if (shouldRemoveListener) window.removeEventListener("scroll", debounceSlideIn);
 }
 
-// Change the navigation bar button color based on what section it is in
-function changeNavBarBtnColor() {
-    const btnNavBar = document.querySelector(".btnNavBar");
-    const aboutSection = document.querySelector("#about");
-    const btnNavBarBox = btnNavBar.getBoundingClientRect();
-    const aboutSectionBox = aboutSection.getBoundingClientRect();
-
-    const contactSection = document.querySelector("#contact");
-    const contactSectionBox = contactSection.getBoundingClientRect();
-
-    // Dark if it is in the about or project section
-    if (btnNavBarBox.bottom > aboutSectionBox.top &&
-        btnNavBarBox.bottom < contactSectionBox.top) {
-        btnNavBar.classList.add("dark");
+// Make an element dark if it is between the top page and bottom page
+function changeElementColor(element, elementBottom, topPageBox, bottomPageBox) {
+    if (elementBottom > topPageBox.top && elementBottom < bottomPageBox.top) {
+        element.classList.add("dark");
     } else {
-        btnNavBar.classList.remove("dark");
+        element.classList.remove("dark");
     }
+}
+
+// Change the various fixed elements based on the background color of the page
+function changeFixedElementColors() {
+    const btnNavBar = document.querySelector(".btnNavBar");
+    const btnNavBarBox = btnNavBar.getBoundingClientRect();
+
+    const bottomBar = document.querySelector(".bottomBar");
+    const bottomBarBox = bottomBar.getBoundingClientRect();
+
+    const aboutPage = document.querySelector("#about");
+    const aboutPageBox = aboutPage.getBoundingClientRect();
+
+    const contactPage = document.querySelector("#contact");
+    const contactPageBox = contactPage.getBoundingClientRect();
+
+    changeElementColor(btnNavBar, btnNavBarBox.bottom, aboutPageBox, contactPageBox);
+
+    // Account for the padding from the contact icons
+    const bottomBarBottom = bottomBarBox.bottom - bottomBar.offsetHeight / 5;
+    changeElementColor(bottomBar, bottomBarBottom, aboutPageBox, contactPageBox);
 }
 
 function showFormMessage(message) {
@@ -107,7 +118,7 @@ function sendEmail() {
 window.addEventListener("scroll", debounceSlideIn);
 
 window.addEventListener("scroll", function() {
-    debounce(changeNavBarBtnColor, 20);
+    debounce(changeFixedElementColors, 20);
 });
 
 // Execute once the DOM is loaded
