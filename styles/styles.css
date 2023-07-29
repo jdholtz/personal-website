@@ -105,7 +105,7 @@ html, body {
   height: 5px;
   background-color: white;
   margin: 6px 0;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 .btnNavBar.dark .bars {
@@ -197,6 +197,189 @@ html, body {
   color: #0B056F;
 }
 
+#about .about {
+  height: 100%;
+  margin: 2%;
+}
+
+#about img {
+  border-radius: 50%;
+  width: 32%;
+  height: 64%;
+  float: left;
+  margin-top: 1.3%;
+  filter: blur(12px);
+}
+
+#about.animate img {
+  transition: filter 1.5s, transform 0.3s;
+  filter: blur(0);
+}
+
+#about img:hover {
+  transform: scale(1.03);
+}
+
+#about .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 58%;
+  height: 65%;
+  float: right;
+  margin: 0 4% 0 1%;
+  user-select: text;
+}
+
+#about .about-description {
+  font-size: 1.7rem;
+  font-family: "Arvo", serif;
+  color: #424242;
+  margin: 0 5%;
+}
+
+#about .timeline {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 3% auto;
+}
+
+/* Middle line */
+#about .timeline::before {
+  content: "";
+  position: absolute;
+  background: #49302b;
+  width: 81%;
+  height: 3%;
+  left: 9.5%;
+  top: 50%;
+  border-radius: 25px;
+  transform: translateY(-50%);
+}
+
+#about .timeline li {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27%; /* (Middle line width / Number of elements in timeline) */
+  height: 100%;
+  float: left;
+  left: 9.5%; /* (100%  - Middle line width) / 2 */
+}
+
+/* Timeline circles */
+#about .timeline li::after {
+  content: "";
+  position: absolute;
+  background: #49302b;
+  width: 25px;
+  height: 25px;
+  top: 50%;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+#about .timeline li .content {
+  position: absolute;
+  width: 75%;
+  height: 38%;
+  border: 3px solid #0B056F;
+  border-radius: 15px;
+  font-family: "Arvo", serif;
+  transform: translateX(100%);
+  transition-duration: 2s;
+}
+
+/* Slide timeline elements into place */
+#about.animate .timeline li .content {
+  transform: translateX(0);
+}
+
+#about .timeline li:nth-child(odd) .content {
+  bottom: 60%;
+}
+
+#about .timeline li:nth-child(even) .content {
+  top: 60%;
+}
+
+/* Timeline arrows */
+#about .timeline li .content::before {
+  content: "";
+  position: relative;
+  border: 12px solid;
+}
+
+#about .timeline li:nth-child(odd) .content::before {
+  top: 110%;
+  border-color: #0B056F transparent transparent;
+}
+
+#about .timeline li:nth-child(even) .content::before {
+  bottom: 27%;
+  border-color: transparent transparent #0B056F;
+}
+
+#about .timeline li .content p {
+  font-size: 0.9rem;
+  margin: 15% 5%;
+  color: #351e10;
+}
+
+#about .timeline li:nth-child(even) .content p {
+  margin: 10% inherit;
+}
+
+#about .timeline li .content time {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  font-size: 1.3rem;
+  font-family: "Roboto Slab", serif;
+  color: gray;
+  margin: 1% 0;
+  transform: translateX(-50%);
+}
+
+#about .timeline li:nth-child(even) .content time {
+  bottom: 0;
+}
+
+#about .resume {
+  font-size: 2.1rem;
+  position: relative;
+  margin: 0 5%;
+  width: 100%;
+}
+
+/* Underline on hover */
+#about .resume:hover::after {
+    content: "";
+    position: absolute;
+    width: 23%;
+    bottom: 0;
+    left: 2.3%;
+    border-bottom: 2.5px solid #53CCDB;
+}
+
+#about .resume a {
+  color: #0C3F8D;
+  text-decoration: none;
+  float: left;
+}
+
+#about .resume i {
+  transition-duration: 0.5s;
+  transform: translateY(4px);
+}
+
+#about .resume:hover i {
+  transform: translateX(25%) translateY(4px);
+}
+
 
 /* | Projects page | */
 
@@ -216,7 +399,7 @@ html, body {
   list-style-type: none;
 }
 
-#project-icons.slide-in .project {
+#projects.animate #project-icons .project {
   transform: translateY(0%);
   transition: transform 1s ease-out;
 }
@@ -237,7 +420,7 @@ html, body {
 
 .project .button {
   top: 67%;
-  bottom: 17%;
+  bottom: 20%;
   width: 45%;
   margin: auto;
   padding-top: 2%;
@@ -285,14 +468,19 @@ html, body {
 }
 
 #contact .contactForm {
+  display: none;
+  width: 50%;
+  height: 75%;
+  margin: auto;
+}
+
+#contact.animate .contactForm {
+  animation: popIn 1s both;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 0.1fr 0.6fr 0.15fr 0.2fr;
   grid-row-gap: 5px;
   grid-column-gap: 5px;
-  width: 50%;
-  height: 75%;
-  margin: auto;
 }
 
 #contact .button,
@@ -376,6 +564,24 @@ html, body {
   100% {
     opacity: 1;
     filter: blur(0px);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1.05);
+  }
+
+  80% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
 

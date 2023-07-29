@@ -13,15 +13,36 @@ function closeNavBar() {
     btnNavBar.classList.remove("open");
 }
 
-// Slide the project icons into view the first time they are loaded
-function slideIn() {
-    const projectIcons = document.querySelector("#project-icons");
+// Add a delay to calling functions with event listeners. Prevents them
+// from being called 10+ times every scroll
+function debounce(method, delay) {
+    clearTimeout(method._tId);
+    method._tId = setTimeout(function() {
+        method();
+    }, delay);
+}
 
-    const slideInPos = (window.scrollY + window.innerHeight) - projectIcons.offsetHeight / 4;
-    if (slideInPos > projectIcons.offsetTop) {
-        projectIcons.classList.add("slide-in");
-        window.removeEventListener("scroll", slideIn);
-    }
+// This function is here to uniquely identify the event listener
+function debounceSlideIn() {
+    debounce(slideIn, 20);
+}
+
+// Slide the elements into view the first time they are loaded
+function slideIn() {
+    let shouldRemoveListener = true;
+
+    const scrollPos = window.scrollY + window.innerHeight;
+    const animationPages = document.querySelectorAll(".shouldAnimate");
+    animationPages.forEach((page) => {
+        const animatePos = scrollPos - page.offsetHeight / 3;
+        if (animatePos > page.offsetTop) {
+            page.classList.add("animate");
+        } else {
+            shouldRemoveListener = false;
+        }
+    });
+
+    if (shouldRemoveListener) window.removeEventListener("scroll", debounceSlideIn);
 }
 
 // Change the navigation bar button color based on what section it is in
@@ -83,9 +104,11 @@ function sendEmail() {
     form.classList.add("submitted");
 }
 
-// TODO: Add debounce function
-window.addEventListener("scroll", slideIn);
-window.addEventListener("scroll", changeNavBarBtnColor);
+window.addEventListener("scroll", debounceSlideIn);
+
+window.addEventListener("scroll", function() {
+    debounce(changeNavBarBtnColor, 20);
+});
 
 // Execute once the DOM is loaded
 document.addEventListener("DOMContentLoaded", function() {

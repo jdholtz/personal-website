@@ -6,7 +6,7 @@
   <link href="styles/styles.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Tilt+Warp&family=Ultra&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Tilt+Warp&family=Ultra&family=Arvo&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="app.js"></script>
 </head>
@@ -49,13 +49,58 @@
       </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="shouldAnimate">
       <h1>ABOUT</h1>
+      <div class="about">
+        <img src="images/Portrait.jpg" alt="Joey Holtzman">
+
+        <div class="description">
+
+          <p class="about-description">
+            I'm a software engineer focused on making products quickly and reliably.
+            I currently work as a data science intern for Northwestern University.
+          </p>
+
+          <ol class="timeline">
+
+            <li>
+              <div class="content">
+                <time>2022 - 2023</time>
+                <p>Data Science Intern at Northwestern University</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="content">
+                <time>2023</time>
+                <p>Graduated Plainfield North High School</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="content">
+                <time>2023 - Present</time>
+                <p>Student at Stanford University</p>
+              </div>
+            </li>
+
+          </ol>
+
+          <div class="resume">
+            <a href="resume.pdf" target="_blank">
+              View My Résumé
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="shouldAnimate">
       <h1>PROJECTS</h1>
       <ul id="project-icons">
+
         <li class="project" id="southwest">
           <img src="images/Southwest.jpg" alt="Auto-Southwest Check-In">
           <p class="project-description">Auto-Southwest<br>Check-In</p>
@@ -81,13 +126,13 @@
       </ul>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="shouldAnimate">
       <h1>CONTACT</h1>
       <form class="contactForm">
         <input class="formInput" type="text" id="name" name="name" placeholder="Name" />
         <input class="formInput"type="email" id="email" name="email" placeholder="Email" />
         <textarea class="formInput"id="message" name="message" placeholder="Message"></textarea>
-        <input id="contactSubmitBtn" class="button" type="submit" value="SUMBIT" />
+        <input class="button" id="contactSubmitBtn" type="submit" value="SUMBIT" />
 
         <div class="formMessage">
           <div class="successMessage">
