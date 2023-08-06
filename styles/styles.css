@@ -63,7 +63,7 @@ img {
 
 #sideNav {
   height: 100%;
-  width: clamp(150px, 15%, 200px);
+  width: clamp(175px, 15%, 200px);
   position: fixed;
   z-index: 1;
   top: 0;
@@ -91,6 +91,11 @@ img {
 
 #sideNav a:hover {
   color: #888888;
+}
+
+#sideNav a i {
+  font-size: clamp(8px, 1.25rem, 16px);
+  transform: translateY(-1px); /* Translate up slightly to be in line with the text */
 }
 
 
@@ -391,9 +396,14 @@ img {
 }
 
 #about .resume {
-  color: #0C3F8D;
   position: relative;
+  pointer-events: none; /* Only allow for clicking in the link element */
+}
+
+#about .resume a {
+  color: #0C3F8D;
   font-size: 2.1rem;
+  pointer-events: auto; /* Enable clicking only in the link element */
 }
 
 /* Underline on hover */
@@ -412,7 +422,7 @@ img {
   transform: translateY(0.2rem);
 }
 
-#about .resume:hover i {
+#about .resume a:hover i {
   transform: translateX(0.5rem) translateY(0.2rem);
 }
 
