@@ -40,25 +40,24 @@
   <div class="sections">
     <section id="homePage">
       <div class="home">
-        <span style="animation-delay: 0.3s;">Hi, </span>
-        <span style="animation-delay: 0.5s;">I'm<br></span>
-        <span style="animation-delay: 0.7s;">Joey </span>
-        <span style="animation-delay: 0.9s;">Holtzman</span>
+        <div class="text">
+          <span style="animation-delay: 0.3s;">Hi, </span>
+          <span style="animation-delay: 0.5s;">I'm<br></span>
+          <span style="animation-delay: 0.7s;">Joey </span>
+          <span style="animation-delay: 0.9s;">Holtzman</span>
+        </div>
 
-        <a href="#about">
-          <div class="button" id="viewWork-button">
+        <div class="buttons">
+          <a href="#about" class="button" style="animation-delay: 1.4s;">
             View My Work
             <i class="fa-solid fa-arrow-right"></i>
-          </div>
-        </a>
+          </a>
 
-        <a href="#contact">
-          <div class="button" id="contact-button">
+          <a href="#contact" class="button" style="animation-delay: 1.8s;">
             Contact Me
             <i class="fa-solid fa-arrow-right"></i>
-          </div>
-        </a>
-
+          </a>
+        </div>
       </div>
     </section>
 
@@ -99,12 +98,10 @@
 
           </ol>
 
-          <div class="resume">
-            <a href="resume.pdf" target="_blank">
-              View My Résumé
-              <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
+          <a href="resume.pdf" target="_blank" class="resume">
+            View My Résumé
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
 
         </div>
       </div>
@@ -116,24 +113,28 @@
 
         <li class="project" id="southwest">
           <img src="images/Southwest.jpg" alt="Auto-Southwest Check-In">
-          <p class="project-description">Auto-Southwest<br>Check-In</p>
-          <a class="project-description button"
-             href="https://github.com/jdholtz/auto-southwest-check-in"
-             rel="noreferrer noopener"
-             target="_blank">
-            View Project
-          </a>
+          <div class="project-description">
+            <p>Auto-Southwest<br>Check-In</p>
+            <a class="button"
+               href="https://github.com/jdholtz/auto-southwest-check-in"
+               rel="noreferrer noopener"
+               target="_blank">
+              View Project
+            </a>
+          </div>
         </li>
 
         <li class="project" id="snakeAI" style="transition-delay: 0.1s;">
           <img src="images/SnakeAI.png" alt="SnakeAI">
-          <p class="project-description">SnakeAI</p>
-          <a class="project-description button"
-             href="https://github.com/jdholtz/SnakeAI"
-             rel="noreferrer noopener"
-             target="_blank">
-            View Project
-          </a>
+          <div class="project-description">
+            <p>SnakeAI</p>
+            <a class="button"
+               href="https://github.com/jdholtz/SnakeAI"
+               rel="noreferrer noopener"
+               target="_blank">
+              View Project
+            </a>
+          </div>
         </li>
 
       </ul>
@@ -141,15 +142,18 @@
 
     <section id="contact" class="shouldAnimate">
       <h1>CONTACT</h1>
+      <div class="description">Get in touch</div>
       <form class="contactForm">
-        <input class="formInput" type="text" id="name" name="name" placeholder="Name" />
-        <input class="formInput"type="email" id="email" name="email" placeholder="Email" />
-        <textarea class="formInput"id="message" name="message" placeholder="Message"></textarea>
-        <input class="button" id="contactSubmitBtn" type="submit" value="SUMBIT" />
+        <div class="styled-input">
+          <input class="formInput" type="text" placeholder="Your Name" name="name" required />
+          <input class="formInput" id="email" placeholder="Your Email" type="email" name="email" required />
+        </div>
+        <textarea class="styled-input large formInput" placeholder="Your Message" id="message" name="message" required ></textarea>
+        <input class="button" type="submit" value="SUBMIT" />
 
         <div class="formMessage">
           <div class="successMessage">
-            Form successfully submitted! I will be in touch with you shortly.
+            Form successfully submitted! I will reply back shortly.
           </div>
           <div class="failMessage">
             Form submission failed. Please send the message to

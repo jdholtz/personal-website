@@ -46,8 +46,8 @@ function slideIn() {
 }
 
 // Make an element dark if it is between the top page and bottom page
-function changeElementColor(element, elementBottom, topPageBox, bottomPageBox) {
-    if (elementBottom > topPageBox.top && elementBottom < bottomPageBox.top) {
+function changeElementColor(element, elementBox, topPageBox, bottomPageBox) {
+    if (elementBox.bottom > topPageBox.top && elementBox.top < bottomPageBox.top) {
         element.classList.add("dark");
     } else {
         element.classList.remove("dark");
@@ -68,11 +68,8 @@ function changeFixedElementColors() {
     const contactPage = document.querySelector("#contact");
     const contactPageBox = contactPage.getBoundingClientRect();
 
-    changeElementColor(btnNavBar, btnNavBarBox.bottom, aboutPageBox, contactPageBox);
-
-    // Account for the padding from the contact icons
-    const bottomBarBottom = bottomBarBox.bottom - bottomBar.offsetHeight / 5;
-    changeElementColor(bottomBar, bottomBarBottom, aboutPageBox, contactPageBox);
+    changeElementColor(btnNavBar, btnNavBarBox, aboutPageBox, contactPageBox);
+    changeElementColor(bottomBar, bottomBarBox, aboutPageBox, contactPageBox);
 }
 
 function showFormMessage(message) {
@@ -85,6 +82,10 @@ function sendEmail() {
 
     // Only submit the form once
     if (form.classList.contains("submitted")) return;
+    // showFormMessage(".successMessage");
+    showFormMessage(".failMessage");
+    form.classList.add("submitted");
+    return
 
     // Create a JSON object from the form data
     const data = new FormData(form);
@@ -115,8 +116,14 @@ function sendEmail() {
     form.classList.add("submitted");
 }
 
-window.addEventListener("scroll", debounceSlideIn);
+// Ensures animations trigger if a user starts zoomed out, loads the page, and
+// zooms back in
+window.addEventListener("resize", debounceSlideIn);
+window.addEventListener("resize", function() {
+    debounce(changeFixedElementColors, 20);
+});
 
+window.addEventListener("scroll", debounceSlideIn);
 window.addEventListener("scroll", function() {
     debounce(changeFixedElementColors, 20);
 });
@@ -133,8 +140,6 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener("keydown", e => {
         if (e.key === "Escape") {
             closeNavBar();
-        } else if (e.key === "1") {
-            toggleNavBar();
         }
     });
 
@@ -151,5 +156,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
         sendEmail();
     });
-
 });
