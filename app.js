@@ -46,7 +46,8 @@ function slideIn() {
 }
 
 // Make an element dark if it is between the top page and bottom page
-function changeElementColor(element, elementBox, topPageBox, bottomPageBox) {
+function changeElementColor(element, topPageBox, bottomPageBox) {
+    const elementBox = element.getBoundingClientRect();
     if (elementBox.bottom > topPageBox.top && elementBox.top < bottomPageBox.top) {
         element.classList.add("dark");
     } else {
@@ -56,20 +57,19 @@ function changeElementColor(element, elementBox, topPageBox, bottomPageBox) {
 
 // Change the various fixed elements based on the background color of the page
 function changeFixedElementColors() {
-    const btnNavBar = document.querySelector(".btnNavBar");
-    const btnNavBarBox = btnNavBar.getBoundingClientRect();
-
-    const bottomBar = document.querySelector(".bottomBar");
-    const bottomBarBox = bottomBar.getBoundingClientRect();
-
     const aboutPage = document.querySelector("#about");
     const aboutPageBox = aboutPage.getBoundingClientRect();
 
     const contactPage = document.querySelector("#contact");
     const contactPageBox = contactPage.getBoundingClientRect();
 
-    changeElementColor(btnNavBar, btnNavBarBox, aboutPageBox, contactPageBox);
-    changeElementColor(bottomBar, bottomBarBox, aboutPageBox, contactPageBox);
+    const btnNavBar = document.querySelector(".btnNavBar");
+    changeElementColor(btnNavBar, aboutPageBox, contactPageBox);
+
+    // Mobile doesn't support querying for changing all icons in the bar
+    // to dark, so this is a little less accurate but still works
+    const bottomBar = document.querySelector(".bottomBar");
+    changeElementColor(bottomBar, aboutPageBox, contactPageBox);
 }
 
 function showFormMessage(message) {
@@ -82,10 +82,6 @@ function sendEmail() {
 
     // Only submit the form once
     if (form.classList.contains("submitted")) return;
-    // showFormMessage(".successMessage");
-    showFormMessage(".failMessage");
-    form.classList.add("submitted");
-    return
 
     // Create a JSON object from the form data
     const data = new FormData(form);

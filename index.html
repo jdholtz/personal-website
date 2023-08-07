@@ -30,16 +30,16 @@
     <a href="https://joeyholtzman.com" class="left">
       <img src="images/icon.jpg" alt="icon">
     </a>
-    <a href="mailto:joeyholtzman0507@gmail.com" target="_blank">
+    <a href="mailto:joeyholtzman0507@gmail.com" target="_blank" class="right">
       <i class="fa-regular fa-envelope"></i>
     </a>
-    <a href="https://github.com/jdholtz" target="_blank">
+    <a href="https://github.com/jdholtz" target="_blank" class="right">
       <i class="fa-brands fa-github"></i>
     </a>
   </div>
 
   <div class="sections">
-    <section id="homePage">
+    <section class="flex-center" id="homePage">
       <div class="home">
         <div class="text">
           <span style="animation-delay: 0.3s;">Hi, </span>
@@ -48,7 +48,7 @@
           <span style="animation-delay: 0.9s;">Holtzman</span>
         </div>
 
-        <div class="buttons">
+        <div class="buttons flex-center">
           <a href="#about" class="button" style="animation-delay: 1.4s;">
             View My Work
             <i class="fa-solid fa-arrow-right"></i>
@@ -62,9 +62,9 @@
       </div>
     </section>
 
-    <section id="about" class="shouldAnimate">
+    <section class="shouldAnimate" id="about">
       <h1>ABOUT</h1>
-      <div class="about">
+      <div class="about flex-center">
         <img src="images/Portrait.jpg" alt="Joey Holtzman">
 
         <div class="description">
@@ -76,21 +76,21 @@
 
           <ol class="timeline">
 
-            <li>
+            <li class="flex-center left">
               <div class="content">
                 <time>2022 - 2023</time>
                 <p>Data Science Intern at Northwestern University</p>
               </div>
             </li>
 
-            <li>
+            <li class="flex-center left">
               <div class="content">
                 <time>2023</time>
                 <p>Graduated Plainfield North High School</p>
               </div>
             </li>
 
-            <li>
+            <li class="flex-center left">
               <div class="content">
                 <time>2023 - Present</time>
                 <p>Student at Stanford University</p>
@@ -110,31 +110,31 @@
       </div>
     </section>
 
-    <section id="projects" class="shouldAnimate">
+    <section class="shouldAnimate" id="projects">
       <h1>PROJECTS</h1>
-      <ul id="project-icons">
+      <ul class="flex-center" id="project-icons">
 
-        <li class="project" id="southwest">
+        <li class="project flex-center">
           <img src="images/Southwest.jpg" alt="Auto-Southwest Check-In">
           <div class="project-description">
             <p>Auto-Southwest<br>Check-In</p>
-            <a class="button"
-               href="https://github.com/jdholtz/auto-southwest-check-in"
+            <a href="https://github.com/jdholtz/auto-southwest-check-in"
                rel="noreferrer noopener"
-               target="_blank">
+               target="_blank"
+               class="button">
               View Project
             </a>
           </div>
         </li>
 
-        <li class="project" id="snakeAI" style="transition-delay: 0.1s;">
+        <li class="project flex-center" style="transition-delay: 0.1s;">
           <img src="images/SnakeAI.png" alt="SnakeAI">
           <div class="project-description">
             <p>SnakeAI</p>
-            <a class="button"
-               href="https://github.com/jdholtz/SnakeAI"
+            <a href="https://github.com/jdholtz/SnakeAI"
                rel="noreferrer noopener"
-               target="_blank">
+               target="_blank"
+               class="button">
               View Project
             </a>
           </div>
@@ -143,15 +143,15 @@
       </ul>
     </section>
 
-    <section id="contact" class="shouldAnimate">
+    <section class="shouldAnimate" id="contact">
       <h1>CONTACT</h1>
-      <div class="description">Get in touch</div>
+      <div class="description">Get in touch with me!</div>
       <form class="contactForm">
         <div class="styled-input">
-          <input class="formInput" type="text" placeholder="Your Name" name="name" required />
-          <input class="formInput" id="email" placeholder="Your Email" type="email" name="email" required />
+          <input class="formInput left" type="text" placeholder="Your Name" name="name" required />
+          <input class="formInput right" id="email" placeholder="Your Email" type="email" name="email" required />
         </div>
-        <textarea class="styled-input large formInput" placeholder="Your Message" id="message" name="message" required ></textarea>
+        <textarea class="styled-input large formInput left" placeholder="Your Message" id="message" name="message" required ></textarea>
         <input class="button" type="submit" value="SUBMIT" />
 
         <div class="formMessage">

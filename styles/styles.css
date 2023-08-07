@@ -1,12 +1,41 @@
 /* | Global Styles | */
 
 /* Just for development */
-* {
-  /* outline: 1px solid red !important; */
+/* * { */
+/*   outline: 1px solid red !important; */
+/* } */
+
+:root {
+  /* Main colors */
+  --primary-color: white;
+  --secondary-color: #0B056F;
+  --tertiary-color: #FF00AA;
+
+  /* Global element colors */
+  --dark-color: black;
+  --hover-color: #888888;
+  --text-color: #424242;
+
+  /* Element-specific colors */
+  --about-resume-color: #0C3F8D;
+  --about-resume-hover-color: #53CCDB;
+
+  --contact-description-color: lightgray;
+  --contact-link-color: #0066FF;
+  --contact-failure-color: #FF3333;
+  --contact-success-color: #00DD00;
+
+  --project-header-color: #43464B;
+
+  --sidebar-color: #404040;
+
+  --timeline-middle-color: #49302B;
+  --timeline-text-color: #351E10;
+  --timeline-time-color: gray;
 }
 
 html, body {
-  background-color: white;
+  background-color: var(--primary-color);
   height: 100%;
   margin: 0;
   padding: 0;
@@ -22,22 +51,41 @@ a {
 }
 
 img {
-  height: auto;
   max-width: 100%;
+  height: auto;
+}
+
+input, textarea {
+  /* Safari has a default border radius, so it needs to be removed */
+  border-radius: 0px;
 }
 
 .button {
   background-color: transparent;
-  color: #FF00AA;
-  border: 2px solid #FF00AA;
+  color: var(--tertiary-color);
   font-family: Cantarell, FreeSans, serif;
+  border: 2px solid var(--tertiary-color);
   cursor: pointer;
   transition: 0.4s linear;
 }
 
 .button:hover {
-  background-color: #FF00AA;
-  color: #0B056F;
+  background-color: var(--tertiary-color);
+  color: var(--secondary-color);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }
 
 .sections {
@@ -47,11 +95,11 @@ img {
 }
 
 .sections h1 {
-  padding-top: 20px;
-  color: #43464b;
-  font-size: 4em;
-  font-family: Cantarell, serif;
+  color: var(--secondary-color);
   margin: 0 0 5rem;
+  padding-top: 20px;
+  font-family: Cantarell, serif;
+  font-size: 4em;
 }
 
 .sections section {
@@ -62,14 +110,13 @@ img {
 /* | Side Navigation Menu | */
 
 #sideNav {
-  height: 100%;
-  width: clamp(175px, 15%, 200px);
+  background-color: var(--sidebar-color);
   position: fixed;
   z-index: 1;
+  height: 100%;
+  width: clamp(175px, 15%, 200px);
   top: 0;
   right: 0;
-  background-color: #404040;
-  overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px;
   transition: transform 0.5s;
   transform: translateX(100%);
@@ -81,19 +128,19 @@ img {
 }
 
 #sideNav a {
+  color: var(--primary-color);
   display: block;
   padding: 0.25rem 1.25rem 1.25rem;
-  font-size: clamp(16px, 2.5rem, 32px);
-  color: white;
-  transition: 0.3s;
   font-family: "Times New Roman", Times, serif;
+  font-size: clamp(16px, 2.5rem, 32px);
+  transition: 0.3s;
 }
 
 #sideNav a:hover {
-  color: #888888;
+  color: var(--hover-color);
 }
 
-#sideNav a i {
+#sideNav i {
   font-size: clamp(8px, 1.25rem, 16px);
   transform: translateY(-1px); /* Translate up slightly to be in line with the text */
 }
@@ -102,35 +149,32 @@ img {
 /* | Navigation Bar Button | */
 
 .btnNavBar {
-  z-index: 2; /* Display over Nav Bar */
-  visibility: visible;
   position: fixed;
-  display: inline-block;
-  cursor: pointer;
+  z-index: 2; /* Display over Nav Bar */
   right: 1.5%;
-  padding: 1rem 0 0 0;
+  margin: 1rem 0 0 0;
+  cursor: pointer;
 }
 
 .bars {
+  background-color: var(--primary-color);
   width: 35px;
   height: 5px;
-  background-color: white;
   margin: 6px 0;
   transition: 0.3s;
 }
 
 .btnNavBar.dark .bars {
-  background-color: black;
+  background-color: var(--dark-color);
 }
 
 .btnNavBar.open .bars {
-  background-color: white;
+  background-color: var(--primary-color);
 }
 
 .btnNavBar:hover .bars {
-  background-color: #888888;
+  background-color: var(--hover-color);
 }
-
 .open #bar1 {
   transform: translate(0, 11px) rotate(45deg);
 }
@@ -146,24 +190,22 @@ img {
 
 
 /* | Bottom bar | */
+
 .bottomBar {
-  overflow: hidden;
   position: fixed;
+  z-index: 1;
   width: 100%;
   bottom: 0;
   pointer-events: none; /* Allow for clicking through the bar */
-  z-index: 1;
 }
 
 .bottomBar a {
   display: block;
   padding: 1% 1.5%;
   font-size: 2.5rem;
-  float: right;
 }
 
 .bottomBar a.left {
-  float: left;
   margin-left: 0;
 }
 
@@ -174,32 +216,29 @@ img {
 }
 
 .bottomBar i {
-  color: white;
-  transition: 0.3s;
+  color: var(--primary-color);
   pointer-events: auto; /* Allow for clicking even though its parent can't be clicked */
+  transition: 0.3s;
 }
 
 .bottomBar.dark i {
-  color: black;
+  color: var(--dark-color);
 }
 
 .bottomBar i:hover {
-  color: #888888;
+  color: var(--hover-color);
 }
 
 
 /* | Homepage | */
 
 #homePage {
-  background-color: #0B056F;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: var(--secondary-color);
   flex-direction: column;
 }
 
 #homePage .text {
-  color: white;
+  color: var(--primary-color);
   font-family: Inter, serif;
   font-size: 4rem;
 }
@@ -211,48 +250,33 @@ img {
   animation: fadeIn 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
-#homePage .buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 #homePage .button {
   width: 100%;
   margin: 15px 15px 0;
   padding: 15px;
-  opacity: 0;
   font-size: 1.3em;
+  opacity: 0;
   animation: fadeIn 2s forwards;
 }
 
-#homePage .button i {
+#homePage i {
   margin-left: 5px;
-  transition: transform ease 0.5s;
+  transition: transform ease 0.4s;
 }
 
 #homePage .button:hover i {
   transform: rotate(90deg);
-  transition: transform ease 0.4s;
 }
 
 
 /* | About page | */
 
-#about {
-  background-color: white;
-}
-
-#about h1 {
-  color: #0B056F;
-}
-
 #about .about {
   display: flex;
   align-items: stretch;
-  justify-content: center;
-  gap: 2rem;
   flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 
 #about img {
@@ -262,8 +286,8 @@ img {
 }
 
 #about.animate img {
-  transition: filter 1.5s, transform 0.3s;
   filter: blur(0);
+  transition: filter 1.5s, transform 0.3s;
 }
 
 #about img:hover {
@@ -273,36 +297,36 @@ img {
 #about .description {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
   justify-content: space-between;
   width: clamp(30.75rem, 50%, 600px);
-  user-select: text;
   margin: 0.6rem;
-  gap: 2rem;
+  user-select: text;
 
   /* Hide scrollbar due to transition from off the screen to on the screen */
   overflow: hidden;
 }
 
-#about .about-description {
-  font-size: 1.5rem;
+.about-description {
+  color: var(--text-color);
   font-family: Arvo, serif;
-  color: #424242;
+  font-size: 1.5rem;
 }
 
-#about .timeline {
+.timeline {
   position: relative;
   width: 30.75rem;
   max-width: 100%;
   height: 60%;
-  padding: 0;
   margin: 0 auto;
+  padding: 0;
 }
 
 /* Middle line */
-#about .timeline::before {
+.timeline:before {
   content: "";
+  background-color: var(--timeline-middle-color);
   position: absolute;
-  background: #49302b;
   height: 10px;
   left: 0;
   right: 0;
@@ -311,23 +335,19 @@ img {
   transform: translateY(-50%);
 }
 
-#about .timeline li {
+.timeline li {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: calc(100% / 3); /* 100% / Number of elements in timeline */
   height: 100%;
   min-height: 300px;
-  float: left;
   list-style: none;
 }
 
 /* Timeline circles */
-#about .timeline li::after {
+.timeline li:after {
   content: "";
+  background-color: var(--timeline-middle-color);
   position: absolute;
-  background: #49302b;
   width: 25px;
   height: 25px;
   top: 50%;
@@ -335,7 +355,7 @@ img {
   transform: translateY(-50%);
 }
 
-#about .timeline li .content {
+.timeline .content {
   position: relative;
   display: flex;
   align-items: center;
@@ -343,55 +363,55 @@ img {
   gap: 0.5rem;
   width: 8.5rem;
   height: 7.875rem;
-  border: 4px solid #0B056F;
-  border-radius: 15px;
   font-family: Arvo, serif;
-  transform: translateX(100%);
+  border: 4px solid var(--secondary-color);
+  border-radius: 15px;
   transition-duration: 2s;
+  transform: translateX(100%);
 }
 
 /* Slide timeline elements into place */
-#about.animate .timeline li .content {
+#about.animate .timeline .content {
   transform: translateX(0);
 }
 
-#about .timeline li:nth-child(odd) .content {
+.timeline li:nth-child(odd) .content {
   bottom: 30%;
 }
 
-#about .timeline li:nth-child(even) .content {
-  top: 30%;
+.timeline li:nth-child(even) .content {
   flex-direction: column-reverse;
+  top: 30%;
 }
 
 /* Timeline arrows */
-#about .timeline li .content::before {
+.timeline li .content::before {
   content: "";
   position: absolute;
   border: 12px solid;
 }
 
-#about .timeline li:nth-child(odd) .content::before {
+.timeline li:nth-child(odd) .content::before {
   top: 100%;
-  border-color: #0B056F transparent transparent;
+  border-color: var(--secondary-color) transparent transparent;
 }
 
-#about .timeline li:nth-child(even) .content::before {
+.timeline li:nth-child(even) .content::before {
   bottom: 100%;
-  border-color: transparent transparent #0B056F;
+  border-color: transparent transparent var(--secondary-color);
 }
 
-#about .timeline li .content time {
+.timeline time {
+  color: var(--timeline-time-color);
   width: 100%;
-  font-size: 1.2rem;
-  font-family: "Roboto Slab", serif;
-  color: gray;
   margin: 2px 0;
+  font-family: "Roboto Slab", serif;
+  font-size: 1.2rem;
 }
 
-#about .timeline li .content p {
+.timeline p {
+  color: var(--timeline-text-color);
   font-size: 1rem;
-  color: #351e10;
   margin: 0 5px;
 }
 
@@ -401,7 +421,7 @@ img {
 }
 
 #about .resume a {
-  color: #0C3F8D;
+  color: var(--about-resume-color);
   font-size: 2.1rem;
   pointer-events: auto; /* Enable clicking only in the link element */
 }
@@ -414,7 +434,7 @@ img {
   height: 2.5px;
   bottom: 0;
   left: 30%;
-  background: #53CCDB;
+  background-color: var(--about-resume-hover-color);
 }
 
 #about .resume i {
@@ -429,47 +449,41 @@ img {
 
 /* | Projects page | */
 
-#projects {
-  background-color: white; /* Set in html and body, but here for clarity */
-}
-
 #project-icons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
   padding: 0;
+  list-style-type: none;
   /* Don't extend the scrollbar to the elements' positions before they are transitioned up */
   overflow-y: hidden;
-  list-style-type: none;
 }
 
-#projects.animate #project-icons .project {
+#projects h1 {
+  color: var(--project-header-color);
+}
+
+#projects.animate .project {
   transform: translateY(0%);
   transition: transform 1s ease-out;
 }
 
-#project-icons .project img {
-  width: 100%;
-  transition: 0.3s;
-}
-
 .project {
-  padding: 1.3%;
   position: relative;
   width: 575px;
+  padding: 1.3%;
   transform: translateY(150%);
+}
+
+.project img {
+  width: 100%;
+  transition: 0.3s;
 }
 
 .project .button {
   padding: 0.625rem 2.5rem;
   font-size: 1.4rem;
+  transition-duration: 0.2s;
 }
-
-.project .button:hover {
-   transition-duration: 0.2s;
- }
 
 .project p {
   font-family: "Playfair Display", Ultra, serif;
@@ -487,46 +501,47 @@ img {
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  inset: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transition: 0.3s;
 }
 
 .project:hover .project-description {
-  transform: scale(1.03);
   opacity: 1;
+  transform: scale(1.03);
 }
 
 
 /* | Contact page | */
 
 #contact {
-  background-color: #0B056F;
+  background-color: var(--secondary-color);
   min-height: 100%;
 }
 
 #contact h1 {
-  color: white;
+  color: var(--primary-color);
   margin-bottom: 2rem;
 }
 
 #contact .description {
-  margin-bottom: 30px;
+  color: var(--contact-description-color);
+  margin: 30px 0;
   font-family: Arvo, serif;
   font-size: 2rem;
-  color: lightgray;
 }
 
 #contact .contactForm {
+  background-color: var(--primary-color);
   display: none;
   width: min(50rem, 90%);
   height: 25rem;
   margin: auto;
-  box-sizing: border-box;
+  padding: 40px 20px 0;
   position: relative;
   border-radius: 15px;
-  background: white;
-  padding: 40px 20px 0;
+  box-sizing: border-box;
 }
 
 #contact.animate .contactForm {
@@ -541,100 +556,84 @@ img {
   height: 10%;
 }
 
-#contact input,
-#contact textarea {
-  /* Safari has a default border radius, so it needs to be removed */
-  border-radius: 0px;
-}
-
-#contact .formInput {
-  position: relative;
-  box-sizing: border-box;
-  width: 48%;
-  height: 100%;
-  float: left;
-  background: none;
-  font-size: 1rem;
-  font-family: "Times New Roman", serif;
-  border: none;
-  border-bottom: solid 2px #424242;
-  color: #424242;
-  outline: none;
-}
-
 #contact .styled-input.large {
   width: 100%;
   height: 30%;
 }
 
-#contact #email {
-  float: right;
+#contact .formInput {
+  background: none;
+  color: var(--text-color);
+  position: relative;
+  width: 48%;
+  height: 100%;
+  font-family: "Times New Roman", serif;
+  font-size: 1rem;
+  border: none;
+  border-bottom: solid 2px var(--text-color);
+  box-sizing: border-box;
+  outline: none;
 }
 
 #contact textarea.formInput {
-  resize: none;
   min-height: 20%;
+  resize: none;
 }
 
 #contact .formInput:focus {
-  outline: none;
-  border-color: #FF00AA;
-}
-
-#contact input {
-  flex-shrink: 0.5;
+  border-color: var(--tertiary-color);
 }
 
 #contact .button {
   width: clamp(200px, 25%, 100%);
   height: 12%;
+  margin: 0 auto;
   font-size: 1.1rem;
   transition-duration: 0.2s;
-  margin: 0 auto;
 }
 
 #contact .formInput:focus::selection {
   /* Highlight color for selected text */
-  background-color: #888888;
+  background-color: var(--hover-color);
 }
 
 #contact .formMessage {
+  margin-top: 10px;
   font-size: 1.1em;
   font-weight: bold;
-  margin-top: 10px;
 }
 
-#contact .contactForm.submitted .formMessage div {
+.contactForm.submitted .formMessage div {
   /* Pop the message out when the form is submitted */
-  animation: 1s popOut ease;
+  animation: 1s popIn ease;
 }
 
-#contact .formMessage div {
+.formMessage div {
   /* Hide the form message until the form is submitted */
   display: none;
   position: absolute;
+  width: 80%;
+  bottom: 2rem;
   left: 0;
   right: 0;
-  width: 80%;
   margin: 0 auto;
-  bottom: 2rem;
 }
 
-#contact .formMessage div.visible {
+.formMessage div.visible {
   /* Reset the display to its inherited value */
   display: unset;
 }
 
-#contact .formMessage .failMessage {
-  color: #FF3333;
+.formMessage .failMessage {
+  color: var(--contact-failure-color);
 }
 
-#contact .formMessage .successMessage {
-  color: #00DD00;
+.formMessage .successMessage {
+  color: var(--contact-success-color);
 }
 
-#contact .failMessage a {
-  color: #00BBFF;
+.failMessage a {
+  color: var(--contact-link-color);
 }
 
 
@@ -642,8 +641,8 @@ img {
 
 @keyframes fadeIn {
   100% {
-    opacity: 1;
     filter: blur(0px);
+    opacity: 1;
   }
 }
 
@@ -658,16 +657,6 @@ img {
 
   80% {
     transform: scale(0.95);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes popOut {
-  50% {
-    transform: scale(1.05);
   }
 
   100% {
@@ -737,7 +726,7 @@ img {
     width: 330px;
   }
 
-  #about .timeline li .content {
+  .timeline li .content {
     gap: 0;
   }
 
@@ -752,10 +741,6 @@ img {
 
   .project .button {
     font-size: 1.7rem;
-  }
-
-  #contact h1 {
-    margin-bottom: 2rem;
   }
 
   #contact .contactForm {
@@ -779,11 +764,12 @@ img {
     font-size: 1.8rem;
   }
 
-  #contact .formMessage div {
+  .formMessage div {
     bottom: 1.5rem;
   }
 }
 
+/* Fix sidebar links being off-screen on landscape Mobile devices */
 @media only screen
   and (max-device-width: 700px)
   and (orientation: landscape) {
