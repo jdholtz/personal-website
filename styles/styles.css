@@ -281,8 +281,12 @@ input, textarea {
 
 #about img {
   width: 575px;
-  border-radius: 50%;
-  filter: blur(12px);
+  /* Used instead of border-radius because filter doesn't take border-radius into account
+   * on iPhones. If clip-path is unsupported in a browser, the image is still circular but
+   * the same issue will still happen on iPhones.
+   * */
+  clip-path: circle();
+  filter: blur(10px);
 }
 
 #about.animate img {
