@@ -66,10 +66,9 @@ function changeFixedElementColors() {
     const btnNavBar = document.querySelector(".btnNavBar");
     changeElementColor(btnNavBar, aboutPageBox, contactPageBox);
 
-    // Mobile doesn't support querying for changing all icons in the bar
-    // to dark, so this is a little less accurate but still works
-    const bottomBar = document.querySelector(".bottomBar");
-    changeElementColor(bottomBar, aboutPageBox, contactPageBox);
+    // Change all icons on the bottom bar
+    const bottomBarIcons = document.querySelectorAll(".bottomBar a i");
+    bottomBarIcons.forEach((icon) => changeElementColor(icon, aboutPageBox, contactPageBox));
 }
 
 function showFormMessage(message) {

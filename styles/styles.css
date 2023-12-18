@@ -221,7 +221,7 @@ input, textarea {
   transition: 0.3s;
 }
 
-.bottomBar.dark i {
+.bottomBar i.dark {
   color: var(--dark-color);
 }
 
