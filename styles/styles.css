@@ -314,7 +314,7 @@ input, textarea {
 .about-description {
   color: var(--text-color);
   font-family: Arvo, serif;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .timeline {
@@ -364,7 +364,7 @@ input, textarea {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.8rem;
   width: 8.5rem;
   height: 7.875rem;
   font-family: Arvo, serif;
@@ -731,7 +731,7 @@ input, textarea {
   }
 
   .timeline li .content {
-    gap: 0;
+    gap: 0.5rem;
   }
 
   #about .resume:hover::after {
