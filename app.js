@@ -32,11 +32,17 @@ function slideIn() {
     let shouldRemoveListener = true;
 
     const scrollPos = window.scrollY + window.innerHeight;
-    const animationPages = document.querySelectorAll(".shouldAnimate");
-    animationPages.forEach((page) => {
-        const animatePos = scrollPos - page.offsetHeight / 3;
-        if (animatePos > page.offsetTop) {
-            page.classList.add("animate");
+    const animationElems = document.querySelectorAll(".shouldAnimate");
+    animationElems.forEach((elem) => {
+        let animatePos = scrollPos;
+        if (elem.tagName == "SECTION") {
+            // Only apply the offset for elements under the entire section so the animation triggers
+            // right away for elements that should be animated individually from the entire section
+            animatePos -= elem.offsetHeight / 3;
+        }
+
+        if (animatePos > elem.offsetTop) {
+            elem.classList.add("animate");
         } else {
             shouldRemoveListener = false;
         }
