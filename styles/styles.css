@@ -803,6 +803,8 @@ input, textarea {
   .timeline li:nth-child(even) .content {
     left: 25%;
     transform: translateX(100%);
+    /* Keep the date above the paragraph */
+    flex-direction: column;
   }
 
   /* Timeline arrows on the left and right of the content boxes */
